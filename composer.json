@@ -1,0 +1,14 @@
+{
+    "name": "davricha/easyfield",
+    "description": "Display input field easily",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "David Richart",
+            "email": "contact@davidrichart.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}

@@ -1,0 +1,136 @@
+<?php
+
+namespace Ddrcha\Easyfield\Libraries;
+
+
+class Easyfield
+{
+	private $type;
+	private $label;
+	private $name;
+	
+	private $note;
+	private $data;
+	private $class;
+	private $additional;
+	
+	private $required;
+	private $value;
+	private $width;
+	
+	private $error;
+	
+	
+	/**
+	 * Display a field
+	 * $options : config of the field
+	 * $item : default object used to complete the value
+	 * $errors : errors from validation
+	 * @return string $html
+	 */
+	public function input($options, $item, $errors){
+		
+		$errorMsg = $this->isValid($options);
+		if (!empty($errorMsg)) return $errorMsg."<hr/>";
+		
+		$template = config('easyfield.templates');
+			
+		$this->type = $options['type'];
+		$this->name = $options['name'];
+		
+		$this->label = (array_key_exists('label', $options)) ? $options['label'] : "";
+		$this->data = (array_key_exists('data', $options)) ? $options['data'] : array();
+		$this->required = (array_key_exists('required', $options)) ? $options['required'] : false;
+		$this->icon = (array_key_exists('icon', $options)) ? $this->getIcon($options['icon']) : "";
+		$this->width = (array_key_exists('width', $options)) ? $options['width'] : "12";
+
+		$this->class = (array_key_exists('class', $options)) ? $options['class'] : false;
+
+		if ($errors->has($this->name)){
+		
+			$this->class = ($template == "materialize") ? $this->class." invalid" : $this->class." is-invalid";
+			$this->error = $errors->first($this->name);
+		}
+		$this->additional = (array_key_exists('additional', $options)) ? $options['additional'] : array();
+		
+		if ($this->type == "submit") $this->value = $this->name;
+		else{
+			if (array_key_exists('value', $options)) $this->value = $options['value'];
+			if (!strpos($this->name, "[]")) $this->value = $item[$this->name];
+			if (\Request::old($this->name)) $this->value = \Request::old($this->name);
+		}
+		return view('easyfield::'.$this->type, [
+			'label' => $this->label,
+			'name' => $this->name,
+			'value' => $this->value,
+			'class' => $this->class,
+			'data' => $this->data,
+			'additional' => $this->getOtherAttributes($this->additional),
+			'note' => $this->note,
+			'icon' => $this->icon,
+			'width' => $this->width,
+			'error' => $this->error
+		]);
+	}
+	
+	
+	/**
+	 * Verify if good params are available for the input type
+	 * $options
+	 * @return empty if valid, string message if error 
+	 */
+	
+	public function isValid($options){
+		
+		if (!array_key_exists('type', $options)) return "'options['type'] is required";
+		if (!in_array($options['type'], ['text', 'textarea', 'wysiwyg', 'select', 'file', 'radio', 'checkbox', 'submit', 'switch'])) return "options['type'] do not contain a managed value";
+		if (!array_key_exists('name', $options)) return "'options['name'] is required";
+		
+		switch($options['type']){
+			case "select" : 
+			case "radio" : 
+			case "checkbox" : 
+				if (!array_key_exists('data', $options)) return "'options['data'] is required";
+					
+				break;
+		}
+		
+		return "";
+	}
+	
+
+	/**
+	 * Get attributes (html)
+	 * $options : array of key / value
+	 * @return string 
+	 */
+	public function getOtherAttributes($additional){
+		$formOptions = array();
+		
+		foreach($additional as $key => $value){
+	
+			$formOptions[] = $key."='".$value."'";
+			
+		}
+		
+		return implode(" ", $formOptions);
+	}
+	
+	
+	/**
+	 * Get icon (html)
+	 * $label : label
+	 * @return string 
+	 */
+	public function getIcon($label){
+		$library = config('easyfield.icons');
+		
+		if ($library == "materialize") return '<i class="material-icons prefix">'.$label.'</i>';
+		else if($library == "fontawesome") return '<i class="'.$label.'"></i>';
+		
+		return $label;
+	}
+	
+	
+}
+	

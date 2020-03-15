@@ -1,0 +1,18 @@
+<div class="form-group col-12 col-sm-{{ $width }}">
+	<label for="{{ $name }}">{{ $label }}</label>
+	
+	<div class="input-group">
+		@if ($icon)
+			 <span class="input-group-addon">{!! $icon !!}</span>
+		@endif
+		<textarea id="{{ $name }}" name="{{ $name }}" class="form-control {{ $class }}" {{ $additional }}>{{ $value }}</textarea>
+		
+		@if ($error)
+			<span class="invalid-error">{{ $error }}</span>
+		@endif
+			
+		@if ($note)
+			<div class="note">{{ $note }}</div>
+		@endif
+	</div>
+</div>
