@@ -1,6 +1,7 @@
 {
-    "name": "davricha/easyfield",
-    "description": "Display input field easily",
+    "name": "ddrcha/easyfield",
+    "description": "My little input builder for Laravel 6 and more",
+	"keywords": ["laravel", "form"],
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -10,5 +11,8 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {}
+    "require": {
+		"laravel/framework": ">=6.0",
+		"php": ">=7.0.0"
+	}
 }
