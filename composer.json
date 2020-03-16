@@ -13,13 +13,13 @@
 			"role": "Developer"
         }
     ],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
 	"prefer-stable": true,
     "require": {
 		"laravel/framework": ">=6.0",
 		"php": ">=7.0"
 	},
-	 "autoload": {
+	"autoload": {
         "psr-4": {
             "Ddrcha\\Easyfield\\": "src"
         }
