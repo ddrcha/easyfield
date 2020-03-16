@@ -4,13 +4,14 @@
 	"keywords": ["laravel", "form"],
     "type": "library",
     "license": "MIT",
+	"version" : "0.9.0",
     "authors": [
         {
             "name": "David Richart",
             "email": "contact@davidrichart.com"
         }
     ],
-    "minimum-stability": "dev",
+    "minimum-stability": "beta",
     "require": {
 		"laravel/framework": ">=6.0",
 		"php": ">=7.0.0"
