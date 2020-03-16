@@ -121,7 +121,7 @@ $data['categories'] = \App\Models\Category::pluck('title', 'id'); // to spend in
 @php
 	// ---- category_id
 	$input = array(
-	'type' => 'select',
+		'type' => 'select',
 		'name' => 'category_id',
 		'label' => 'Main category',
 		'data' => $categories
@@ -193,7 +193,7 @@ $data['selectedEditors'] = $selectedEditors:
 
 // In your blade template
 @php
-	// ---- headline of post
+	// ---- editors
 	$input = array(
 		'type' => 'select',
 		'name' => 'editors[]',
