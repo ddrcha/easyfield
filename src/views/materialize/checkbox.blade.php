@@ -1,8 +1,12 @@
 <div class="input-field col s12 l{{ $width }}">
-	<label class="col s1">{{ $label }}</label>
+	<label class="col s1" for="{{ $name }}">
+		{{ $label }}
+		@if ($required)
+			<span class="required">*</span>
+		@endif	
+	</label>
 	<div class="col s11">
 		@foreach ($data as $dataValue => $dataLabel)
-		
 			@if ($value == $dataValue) 
 				<input type="checkbox" name="{{ $name }}" value="{{ $dataValue }}" selected="selected">{{ $dataLabel }}</option>
 			@else  

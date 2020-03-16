@@ -1,5 +1,10 @@
 <div class="form-group col-12 col-sm-{{ $width }}">
-	<label for="{{ $name }}">{{ $label }}</label>
+	<label for="{{ $name }}">
+		{{ $label }}
+		@if ($required)
+			<span class="required">*</span>
+		@endif	
+	</label>
 	
 	<div class="input-group">
 		@if ($icon)

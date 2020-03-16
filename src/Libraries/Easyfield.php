@@ -45,6 +45,8 @@ class Easyfield
 		$this->width = (array_key_exists('width', $options)) ? $options['width'] : "12";
 
 		$this->class = (array_key_exists('class', $options)) ? $options['class'] : false;
+		$this->template = (array_key_exists('template', $options)) ? $options['template'] : false;
+		
 
 		if ($errors->has($this->name)){
 		
@@ -59,7 +61,11 @@ class Easyfield
 			if (!strpos($this->name, "[]")) $this->value = $item[$this->name];
 			if (\Request::old($this->name)) $this->value = \Request::old($this->name);
 		}
-		return view('easyfield::'.$this->type, [
+		
+		if ($this->template) $template = $this->template;
+		else $template = $this->type;
+		
+		return view('easyfield::'.$template, [
 			'label' => $this->label,
 			'name' => $this->name,
 			'value' => $this->value,
@@ -69,7 +75,8 @@ class Easyfield
 			'note' => $this->note,
 			'icon' => $this->icon,
 			'width' => $this->width,
-			'error' => $this->error
+			'error' => $this->error,
+			'required' => $this->required
 		]);
 	}
 	

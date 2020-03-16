@@ -3,7 +3,12 @@
 		{!! $icon !!}
 	@endif
 	<textarea id="{{ $name }}" name="{{ $name }}" class="validate {{ $class }}" {{ $additional }}>{{ $value }}</textarea>
-	<label for="{{ $name }}">{{ $label }}</label>
+	<label for="{{ $name }}">
+		{{ $label }}
+		@if ($required)
+			<span class="required">*</span>
+		@endif	
+	</label>
 	@if ($error)
 		<span class="red-text text-darken-1">{{ $error }}</span>
 	@endif
