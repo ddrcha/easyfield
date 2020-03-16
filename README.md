@@ -70,10 +70,11 @@ All available options in the detail :
 | icon |  | String. Add icon before field. The used library can be setted in config file |
 | class |  | String. Additional classes spent to the input field |
 | width |  | Integer. Size of the field (in 12 grid columns layout). '12' by default |
-| data | X (only for 'select' type) | Eloquent collection. |
+| data | X (only for 'select' type) | Eloquent collection |
 | note |  | String. Display a small information after field |
 | value |  | String. If you want to set a particular value by default |
-| additional |  | Associative Array (key => value). Add additional attributes to the input field ! |
+| additional |  | Associative Array (key => value). Add all additional attributes you need ! |
+| template |  | String. Use a custom template file (ex : "text2" will use "resources\views\vendor\easyfield\text2.blade.php") |
 
 ### Simple examples ###
 
