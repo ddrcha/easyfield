@@ -11,7 +11,5 @@ return [
     | materialize, fontawesome
     */
 
-    'icons' => 'materialize'
-
-	
+    'icons' => 'fontawesome'
 ];
