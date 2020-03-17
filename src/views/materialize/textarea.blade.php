@@ -13,6 +13,6 @@
 		<span class="red-text text-darken-1">{{ $error }}</span>
 	@endif
 	@if ($note)
-		<div class="note">{{ $note }}</div>
+		<span class="helper-text note">{{ $note }}</span>
 	@endif
 </div>

@@ -1,12 +1,11 @@
 <div class="input-field col s12 l{{ $width }}">
-	<label for="{{ $name }}">
-		{{ $label }}
-		@if ($required)
-			<span class="required">*</span>
-		@endif	
-	</label>
 	<div class="switch">
 		<label>
+			{{ $label }}
+			@if ($required)
+				<span class="required">*</span>
+			@endif	
+			&nbsp;&nbsp;&nbsp;
 			Non
 			<input type="checkbox" name="{{ $name }}" 
 				@if($value) checked="checked" @endif
@@ -19,7 +18,7 @@
 			<span class="red-text text-darken-1">{{ $error }}</span>
 		@endif
 		@if ($note)
-			<div class="note">{{ $note }}</div>
+			<span class="helper-text note">{{ $note }}</span>
 		@endif
 	</div>
 
