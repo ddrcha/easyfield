@@ -1,17 +1,6 @@
 <?php
 
 return [
-
-    /*
-    |--------------------------------------------------------------------------
-    | Templates
-    |--------------------------------------------------------------------------
-    |
-    | Directory of input templates used
-    | Choose existing directory (materialize, bootstrap5) or create new one !
-    */
-
-    'templates' => 'materialize',
 	
 	 /*
     |--------------------------------------------------------------------------
