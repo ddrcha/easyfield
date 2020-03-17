@@ -46,6 +46,7 @@ class Easyfield
 
 		$this->class = (array_key_exists('class', $options)) ? $options['class'] : false;
 		$this->template = (array_key_exists('template', $options)) ? $options['template'] : false;
+		$this->note = (array_key_exists('note', $options)) ? $options['note'] : false;
 		
 
 		if ($errors->has($this->name)){
