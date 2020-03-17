@@ -23,18 +23,9 @@ Then set reference to the package in adding two lines in your config/app.php fil
 ],
 ```
 
-## Customization ##
+Easyfield integrates by default templates for Bootstrap 5 and Materialize.
 
-Easyfield integrates templates for Bootstrap 5 / Font Awesome (by default) and Materialize.
-If you want to change the configuration you must publish it with this command line : 
-
-```
-php artisan vendor:publish --provider="Ddrcha\Easyfield\EasyfieldServiceProvider" --tag=config
-```
-
-A new file named easyfield.php will be added into your "[project]/config" folder (containing two options, "templates" and "icons").
-
-It's also possible to edit templates with one of these command lines : 
+You must publish one of them to use the package : 
 
 ```
 php artisan vendor:publish --provider="Ddrcha\Easyfield\EasyfieldServiceProvider" --tag=bootstrap5
@@ -42,12 +33,24 @@ OR
 php artisan vendor:publish --provider="Ddrcha\Easyfield\EasyfieldServiceProvider" --tag=materialize
 ```
 
-All templates (one by input type) become so available in your "[project]/resources/views/vendor/easyfield" folder !
+All templates (one by input type) become so available in your "[project]/resources/views/vendor/easyfield" folder. You are free to modify it and add others views (that you can set with "template" option).
+
+
+## Icons ##
+
+By default Easyfield use Font Awesome icons. If you want to use materialize icons, you must publish config file and modify the "icons" variable : 
+
+```
+php artisan vendor:publish --provider="Ddrcha\Easyfield\EasyfieldServiceProvider" --tag=config
+```
+
+(A file named "easyfield.php" will be added into your "[project]/config" folder).
+
 
 
 ## Usage ##
 
-Don't forget to include libraries you want to use (Bootstrap 5, Materialize, Datepicker, Select2, etc...) in your view before using Easyfield.
+Don't forget to include libraries you want to use (Bootstrap 5, Materialize, Datepicker, Select2, Font Awesome, etc...) in your view before using Easyfield.
 
 ### The syntax ###
 
@@ -55,7 +58,7 @@ To display a field use this syntax :
 ```
 {!! \Easyfield::input($input, $item, $errors) !!}
 // $input (array) : All configuration options
-// $item  (eloquent collection) : main object used to complete the form
+// $item  (eloquent object) : main object used to complete the form
 // $errors (array) : optional returns of validation form.
 ```
 
