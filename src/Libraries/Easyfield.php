@@ -117,7 +117,7 @@ class Easyfield
 		
 		foreach($additional as $key => $value){
 	
-			$formOptions[] = $key."='".$value."'";
+			$formOptions[] = $key."=".$value;
 			
 		}
 		
