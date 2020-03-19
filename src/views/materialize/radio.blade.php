@@ -14,11 +14,12 @@
 		@endif	
 	@endforeach
 		
-	@if ($error)
-		<span class="red-text text-darken-1">{{ $error }}</span>
-	@endif
+	
 	@if ($note)
 		<span class="helper-text note">{{ $note }}</span>
+	@endif
+	@if ($error)
+		<span class="red-text text-darken-1">{{ $error }}</span>
 	@endif
 
 </div>
