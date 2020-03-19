@@ -53,7 +53,9 @@ class Easyfield
 		
 			$this->class = ($template == "materialize") ? $this->class." invalid" : $this->class." is-invalid";
 			$this->error = $errors->first($this->name);
-		}
+		}else
+			$this->error = null;
+		
 		$this->additional = (array_key_exists('additional', $options)) ? $options['additional'] : array();
 		
 		if ($this->type == "submit") $this->value = $this->name;
