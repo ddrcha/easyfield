@@ -37,6 +37,8 @@ class Easyfield
 			
 		$this->type = $options['type'];
 		$this->name = $options['name'];
+		$dottedName = str_replace("]", "", $this->name);
+		$dottedName = str_replace("[", ".", $dottedName); // 'labelX.labelY' version for arrays
 		
 		$this->label = (array_key_exists('label', $options)) ? $options['label'] : "";
 		$this->data = (array_key_exists('data', $options)) ? $options['data'] : array();
@@ -48,11 +50,11 @@ class Easyfield
 		$this->template = (array_key_exists('template', $options)) ? $options['template'] : false;
 		$this->note = (array_key_exists('note', $options)) ? $options['note'] : false;
 		
-
-		if ($errors->has($this->name)){
-		
+		if ($errors->has($dottedName)){
 			$this->class = ($template == "materialize") ? $this->class." invalid" : $this->class." is-invalid";
-			$this->error = $errors->first($this->name);
+			
+			$this->error = $errors->first($dottedName);
+			
 		}else
 			$this->error = null;
 		
@@ -60,10 +62,14 @@ class Easyfield
 		
 		if ($this->type == "submit") $this->value = $this->name;
 		else{
-			if (array_key_exists('value', $options)) $this->value = $options['value'];
-			if (!strpos($this->name, "[]")) $this->value = $item[$this->name];
-			if (\Request::old($this->name)) $this->value = \Request::old($this->name);
+			$itemValue = (array_key_exists($this->name, $item)) ? $item[$this->name] : ""; // security
+			
+			if (\Request::old($dottedName)) $this->value = \Request::old($dottedName);
+			else if (array_key_exists('value', $options)) $this->value = $options['value'];
+			else if (!strpos($this->name, "[]")) $this->value = $itemValue; 
+			else $this->value = "";
 		}
+		
 		
 		if ($this->template) $template = $this->template;
 		else $template = $this->type;
