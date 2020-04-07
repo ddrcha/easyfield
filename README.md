@@ -28,7 +28,7 @@ Easyfield integrates by default templates for Bootstrap 5 and Materialize.
 You must publish one of them to use the package : 
 
 ```
-php artisan vendor:publish --provider="Ddrcha\Easyfield\EasyfieldServiceProvider" --tag=bootstrap5
+php artisan vendor:publish --provider="Ddrcha\Easyfield\EasyfieldServiceProvider" --tag=bootstrap4
 OR
 php artisan vendor:publish --provider="Ddrcha\Easyfield\EasyfieldServiceProvider" --tag=materialize
 ```
@@ -80,6 +80,8 @@ All available options in the detail :
 | template |  | String. Use a custom template file (ex : "text2" will use "resources\views\vendor\easyfield\text2.blade.php") |
 
 ### Simple examples ###
+
+Nota : For a best rendering insert all your fields into <div class="form-row"> / </div> tags (if you use Bootstrap 4).
 
 #### Text ####
 

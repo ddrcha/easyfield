@@ -28,8 +28,8 @@ class EasyfieldServiceProvider extends ServiceProvider
 		], 'materialize');
 
 		$this->publishes([
-			__DIR__.'/views/bootstrap5' => resource_path('views/vendor/easyfield'),
-		], 'bootstrap5');
+			__DIR__.'/views/bootstrap4' => resource_path('views/vendor/easyfield'),
+		], 'bootstrap4');
 
 
 
