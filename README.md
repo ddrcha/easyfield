@@ -81,7 +81,10 @@ All available options in the detail :
 
 ### Simple examples ###
 
-Nota : For a best rendering insert all your fields into <div class="form-row"> / </div> tags (if you use Bootstrap 4).
+Nota : For a best rendering insert all your fields into tags (if you use Bootstrap 4).
+```
+<div class="form-row"></div>
+```
 
 #### Text ####
 
