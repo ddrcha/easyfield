@@ -58,12 +58,12 @@ class Easyfield
 		}else
 			$this->error = null;
 		
-		$this->additional = (array_key_exists('additional', $options)) ? $options['additional'] : array();
+		$this->additional = (isset($options['additional'])) ? $options['additional'] : array();
 		
 		if ($this->type == "submit") $this->value = $this->name;
 		else{
-			$itemValue = (array_key_exists($this->name, $item)) ? $item[$this->name] : ""; // security
-			
+			$itemValue = (isset($item[$this->name])) ? $item[$this->name] : ""; // security
+				
 			if (\Request::old($dottedName)) $this->value = \Request::old($dottedName);
 			else if (array_key_exists('value', $options)) $this->value = $options['value'];
 			else if (!strpos($this->name, "[]")) $this->value = $itemValue; 
