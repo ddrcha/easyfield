@@ -51,7 +51,7 @@ class Easyfield
 		$this->note = (array_key_exists('note', $options)) ? $options['note'] : false;
 		
 		if ($errors->has($dottedName)){
-			$this->class = ($template == "materialize") ? $this->class." invalid" : $this->class." is-invalid";
+			$this->class = ($this->template == "materialize") ? $this->class." invalid" : $this->class." is-invalid";
 			
 			$this->error = $errors->first($dottedName);
 			
