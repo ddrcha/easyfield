@@ -159,7 +159,7 @@ $data['categories'] = \App\Models\Category::pluck('title', 'id'); // to spend in
 
 ### Advanced examples ###
 
-#### Wysiwig (via ckeditor 5) ####
+#### Wysiwyg (via ckeditor 5) ####
 ```
 // In your blade template
 @php
