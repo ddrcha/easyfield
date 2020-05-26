@@ -66,7 +66,7 @@ All available options in the detail :
 
 | Option | Required | Description |
 | --- | --- | --- |
-| type | X | String. 'type=' of the field. Possible values : 'text', 'textarea', 'select', 'file', 'radio', 'checkbox', 'submit' (button), 'switch' |
+| type | X | String. 'type=' of the field. Possible values : 'text', 'password', 'textarea', 'select', 'file', 'radio', 'checkbox', 'submit' (button), 'switch' |
 | name | X | String. 'name=' of the field |
 | label |  | String. Text displayed before the input |
 | required |  | String. Display * before label if 'true', 'false' by default |
@@ -101,6 +101,24 @@ Nota : For a best rendering insert all your fields into tags (if you use Bootstr
 @endphp
 {!! \Easyfield::input($input, $item, $errors) !!}		
 ```
+
+
+#### Password ####
+
+```
+// In your blade template
+@php
+	// ---- title
+	$input = array(
+		'type' => 'password',
+		'name' => 'title',
+		'label' => 'Title of post',
+		'required' => true
+	);
+@endphp
+{!! \Easyfield::input($input, $item, $errors) !!}		
+```
+
 
 #### File ####
 
