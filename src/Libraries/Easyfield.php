@@ -99,7 +99,7 @@ class Easyfield
 	public function isValid($options){
 		
 		if (!array_key_exists('type', $options)) return "'options['type'] is required";
-		if (!in_array($options['type'], ['text', 'textarea', 'wysiwyg', 'select', 'file', 'radio', 'checkbox', 'submit', 'switch'])) return "options['type'] do not contain a managed value";
+		if (!in_array($options['type'], ['text', 'password', 'textarea', 'wysiwyg', 'select', 'file', 'radio', 'checkbox', 'submit', 'switch'])) return "options['type'] do not contain a managed value";
 		if (!array_key_exists('name', $options)) return "'options['name'] is required";
 		
 		switch($options['type']){
